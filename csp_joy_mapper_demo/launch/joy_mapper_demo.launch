@@ -1,0 +1,36 @@
+<launch>
+	<arg name="veh" doc="Name of vehicle"/>
+	<arg name="pkg_name" default="csp_joy_mapper_demo"/>
+	<arg name="local" default="false"/>
+	<arg name="joymapper" default="false"/>
+	<include unless="$(arg local)" file="$(find duckietown)/machines"/>
+	
+
+
+	#Open joy_node, a node that interfaces a generic Linux joystick to ROS 
+    <node ns="$(arg veh)" pkg="joy" type="joy_node" name="joy" output="screen">
+        <rosparam command="load" file="$(find duckietown)/config/baseline/joy/joy_node/default.yaml"/>
+    </node>
+
+    
+    <group if="$(arg joymapper)">
+
+    	#Open joy mapper
+		<node ns="$(arg veh)" name="joy_mapper_node" pkg="$(arg pkg_name)" type="joy_mapper_node.py"  output="screen">
+		</node>
+
+		# Open inverse_kinematics_node
+		<remap from="inverse_kinematics_node/car_cmd" to="joy_mapper_node/car_cmd"/>
+		<include file="$(find dagu_car)/launch/inverse_kinematics_node.launch">
+			<arg name="veh" value="$(arg veh)"/>
+		</include>
+
+	    #wheel driver
+	    <remap from="wheels_driver_node/wheels_cmd" to="inverse_kinematics_node/wheels_cmd"/>
+	    <include file="$(find dagu_car)/launch/wheels_driver_node.launch">
+	        <arg name="veh" value="$(arg veh)"/>
+	    </include>  
+
+	</group>
+
+</launch>
