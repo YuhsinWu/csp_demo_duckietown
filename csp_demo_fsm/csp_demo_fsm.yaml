@@ -22,6 +22,7 @@ events: #Maps from subscribing topic to signal ids
 # Define nodes 
 nodes:
   stop_line_filter_node: "stop_line_filter_node/switch"
+  lane_filter_node: "lane_filter_node/switch"
 
 # Define state transitions
 states:
@@ -31,14 +32,14 @@ states:
       pressA: "ORANGE"
     active_nodes:
       - stop_line_filter_node
-    lights: ["joystick"]
+      - lane_filter_node
 
   BANANA:
     transitions:
       pressX: "APPLE"
       pressY: "ORANGE"
     active_nodes:
-    lights: ["joystick"]
+      - lane_filter_node
 
   ORANGE:
     transitions:
@@ -46,4 +47,3 @@ states:
       pressY: "APPLE"
     active_nodes:
       - stop_line_filter_node
-    lights: ["joystick"]
