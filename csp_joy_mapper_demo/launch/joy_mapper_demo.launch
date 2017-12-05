@@ -45,6 +45,7 @@
 			<arg name="config" value="$(arg config)"/>        
 			<arg name="param_file_name" value="csp_demo_fsm"/>        
 		</include>
+	</group>
 	<!--End FSM -->
 
 </launch>
