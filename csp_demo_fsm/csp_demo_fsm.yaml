@@ -1,23 +1,23 @@
 # Initail state of the FSM
-initial_state: "APPLE"
+initial_state: "???"
 
 events: #Maps from subscribing topic to signal ids
   pressX:
     topic: "joy_mapper_node/pub_X"
     msg_type: "BoolStamped"
-    trigger: True
+    trigger: ???
   pressY:
-    topic: "joy_mapper_node/pub_Y"
+    topic: "???"
     msg_type: "BoolStamped"
-    trigger: True
+    trigger: ???
   pressA: 
-    topic: "joy_mapper_node/pub_A"
+    topic: "???"
     msg_type: "BoolStamped"
-    trigger: False
+    trigger: ???
   pressB: 
-    topic: "joy_mapper_node/pub_B"
+    topic: "???"
     msg_type: "BoolStamped"
-    trigger: True
+    trigger: ???
 
 # Define nodes 
 nodes:
@@ -28,22 +28,22 @@ nodes:
 states:
   APPLE:
     transitions:
-      pressB: "BANANA"
-      pressA: "ORANGE"
+      ???: "???"
+      ???: "???"
     active_nodes:
       - stop_line_filter_node
       - lane_filter_node
 
   BANANA:
     transitions:
-      pressX: "APPLE"
-      pressY: "ORANGE"
+      ???: "???"
+      ???: "???"
     active_nodes:
       - lane_filter_node
 
-  ORANGE:
+  ???:
     transitions:
-      pressB: "BANANA"
-      pressY: "APPLE"
+      ???: "???"
+      ???: "???"
     active_nodes:
       - stop_line_filter_node
