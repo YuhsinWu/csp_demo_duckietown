@@ -101,10 +101,8 @@ class StopLineFilterNode(object):
                 msg =  ?????                #Declaration
                 msg.header.stamp = ?????    #Assign segment_list time stamp
                 msg.data = ?????            #If you want to trigger the event at_stop_line, message data must be "true" 
-                ###Answer
-                msg = BoolStamped()
-                msg.header.stamp = stop_line_reading_msg.header.stamp
-                msg.data = True
+                
+                
                 print "Event stop line fiter is triggered ? :"+msg.data
 
                 self.pub_at_stop_line.publish(msg)
