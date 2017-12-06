@@ -30,35 +30,35 @@ class JoyMapperNode(object):
 
 	def JoyAxes(self, joy_msg):
 
-		carcmd = Twist2DStamped()
-		carcmd.v = self.v * joy_msg.axes[4]
-		self.pub_carcmd.publish(carcmd)
+		#carcmd = XXXX
+		#carcmd.v = XXXX
+		#publish??
 
 	def JoyButton(self, joy_msg):
 
 		if(joy_msg.buttons[0] == 1):
 			rospy.loginfo("[%s] You Press Button A " %(self.node_name))
-			state = BoolStamped()
-			state.data = False
-			self.pub_A.publish(state)
+			#state = XXX
+			#state.data = XXX
+			#publush
 
-		elif(joy_msg.buttons[1] == 1):
+		elif(XXXXXXXXXXXX):
 			rospy.loginfo("[%s] You Press Button B " %(self.node_name))
-			state = BoolStamped()
-			state.data = True
-			self.pub_B.publish(state)
+			#state = XXX
+			#state.data = XXX
+			#publush
 
-		elif(joy_msg.buttons[2] == 1):
+		elif(XXXXXXXXXXXX):
 			rospy.loginfo("[%s] You Press Button X " %(self.node_name))
-			state = BoolStamped()
-			state.data = True
-			self.pub_X.publish(state)
+			#state = XXX
+			#state.data = XXX
+			#publush
 
-		elif(joy_msg.buttons[3] == 1):
+		elif(XXXXXXXXXXXX):
 			rospy.loginfo("[%s] You Press Button Y " %(self.node_name))
-			state = BoolStamped()
-			state.data = True
-			self.pub_Y.publish(state)
+			#state = XXX
+			#state.data = XXX
+			#publush
 
 		else:
 			some_active = sum(joy_msg.buttons) 
